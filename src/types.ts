@@ -26,7 +26,7 @@ const axisOption = {
 };
 
 return {
-  backgroundColor: '#262B30',
+  backgroundColor: '#2c343c',
   tooltip: {
     trigger: 'axis',
   },
@@ -58,25 +58,53 @@ return {
     bottom: 24,
     containLabel: true,
   },
-  series: [
-    { name: 'piecharttemp1',
-            type: 'pie',
-            radius: [30, 110],
-            center: ['50%', '50%'],
-            roseType: 'area',
-            data: [
-                {value: 10, name: 'Data1', itemStyle: {color: '#195292'}},
-                {value: 5, name: 'Data2', itemStyle: {color: '#19923C'}},
-                {value: 15, name: 'Data3', itemStyle: {color: '#195292'}},
-                {value: 25, name: 'Data4', itemStyle: {color: '#19923C'}},
-                {value: 20, name: 'Data5', itemStyle: {color: '#195292'}},
-                {value: 35, name: 'Data6', itemStyle: {color: '#19923C'}},
-                {value: 30, name: 'Data7', itemStyle: {color: '#195292'}},
-                {value: 40, name: 'Data8', itemStyle: {color: '#19923C'}}
-            ]
+  
+  tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
     },
-  ],
-   graphic: [
+  
+  series: [
+        {
+            name: 'piechart3',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '50%'],
+            data: [
+                {value: 335, name: 'Data1'},
+                {value: 310, name: 'Data2'},
+                {value: 274, name: 'Data3'},
+                {value: 235, name: 'Data4'},
+                {value: 400, name: 'Data5'}
+            ].sort(function (a, b) { return a.value - b.value; }),
+            roseType: 'radius',
+            label: {
+                color: 'rgba(255, 255, 255, 0.5)',
+                fontWeight: 'bold'
+            },
+            labelLine: {
+                lineStyle: {
+                    color: 'rgba(64, 224, 208, 0.3)'
+                },
+                smooth: 0.5,
+                length: 40,
+                length2: 20
+            },
+            itemStyle: {
+                color: '#3FB9C6',
+                shadowBlur: 200,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
+        }
+    ],
+  
+  graphic: [
     {
             type: 'image',
             id: 'logo',
@@ -88,8 +116,8 @@ return {
                 height: 30,
                 opacity: 1
             }
-  },
-     ],
+  }
+    ],
 };`;
 
 // const getOption = `function (${funcParams}) {
